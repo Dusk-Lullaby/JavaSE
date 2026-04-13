@@ -14,7 +14,7 @@ public class HP extends Item{
 
     /**
      * 使用药品可以回复血量
-     * @return
+     * @return 回复的血量
      */
     public int use() {
         count--;
@@ -23,7 +23,7 @@ public class HP extends Item{
 
     /**
      * 检测药品是否可以被销毁
-     * @return
+     * @return 是否可以销毁
      */
     public boolean canDestroy() {
         return count == 0;
