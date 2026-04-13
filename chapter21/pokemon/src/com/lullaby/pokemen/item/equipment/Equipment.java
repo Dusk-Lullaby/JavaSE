@@ -27,4 +27,32 @@ public abstract class Equipment extends Item {
     public String getItemInformation() {
         return name + ": 攻击=" + attack + " 防御=" + defense + " 生命=" + health;
     }
+
+    /**
+     * 与其他装备比较
+     * @param other 其他装备
+     * @return 该装备是否比其他装备好
+     */
+    public boolean isBetter(Equipment other) {
+        // 首先必须保证是同类型装备
+        if(this.getClass() == other.getClass()) {
+            int total1 = this.attack + this.defense + this.health >> 1;
+            int total2 = other.attack + other.defense + other.health >> 1;
+            return total1 > total2;
+        }
+
+        return false;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getHealth() {
+        return health;
+    }
 }
