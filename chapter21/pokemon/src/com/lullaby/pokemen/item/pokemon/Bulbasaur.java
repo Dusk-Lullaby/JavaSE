@@ -5,7 +5,7 @@ package com.lullaby.pokemen.item.pokemon;
  */
 public class Bulbasaur extends Pokemon{
 
-    public Bulbasaur(String name) {
+    public Bulbasaur() {
         super("妙蛙种子");
         this.attack = 60;
         this.defense = 40;

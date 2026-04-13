@@ -5,7 +5,7 @@ package com.lullaby.pokemen.item.pokemon;
  */
 public class Charmander extends Pokemon{
 
-    public Charmander(String name) {
+    public Charmander() {
         super("小火龙");
         this.attack = 100;
         this.defense = 80;
