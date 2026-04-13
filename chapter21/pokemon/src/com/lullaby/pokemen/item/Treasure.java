@@ -15,7 +15,7 @@ public class Treasure extends Item {
 
     /**
      * 开启宝箱能够获得一个物品
-     * @return
+     * @return 开启宝箱获得的物品
      */
     public Item open() {
         Random random = new Random();
