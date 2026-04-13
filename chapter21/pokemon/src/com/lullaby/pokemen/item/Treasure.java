@@ -1,5 +1,7 @@
 package com.lullaby.pokemen.item;
 
+import com.lullaby.pokemen.util.Tools;
+
 import java.util.Random;
 
 /**
@@ -18,7 +20,7 @@ public class Treasure extends Item {
     public Item open() {
         Random random = new Random();
         // 取[0, 10)之间的随机数
-        int num = random.nextInt(10);
+        int num = Tools.getRandomNumber(10);
         if (num == 0) { // 获得宠物小精灵
 
         } else if (num <= 3) {  // 获得装备
