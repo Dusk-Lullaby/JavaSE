@@ -10,5 +10,6 @@ public class Charmander extends Pokemon{
         this.attack = 100;
         this.defense = 80;
         this.health = 1000;
+        this.currentHealth = health;
     }
 }

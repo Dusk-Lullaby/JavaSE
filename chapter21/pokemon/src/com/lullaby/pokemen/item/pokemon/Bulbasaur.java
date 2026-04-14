@@ -10,5 +10,6 @@ public class Bulbasaur extends Pokemon{
         this.attack = 60;
         this.defense = 40;
         this.health = 600;
+        this.currentHealth = health;
     }
 }

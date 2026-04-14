@@ -9,5 +9,6 @@ public class Jolteon extends Pokemon{
         this.attack = 80;
         this.defense = 60;
         this.health = 800;
+        this.currentHealth = health;
     }
 }
