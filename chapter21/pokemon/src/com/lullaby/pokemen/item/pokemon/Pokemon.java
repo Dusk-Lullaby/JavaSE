@@ -1,6 +1,7 @@
 package com.lullaby.pokemen.item.pokemon;
 
 import com.lullaby.pokemen.item.Item;
+import com.lullaby.pokemen.item.Monster;
 import com.lullaby.pokemen.item.equipment.*;
 
 public abstract class Pokemon extends Item {
@@ -16,6 +17,10 @@ public abstract class Pokemon extends Item {
      * 生命值
      */
     protected int health;
+    /**
+     * 当前生命值
+     */
+    protected  int currentHealth;
     /**
      * 星级，默认1星
      */
@@ -33,6 +38,23 @@ public abstract class Pokemon extends Item {
     @Override
     public String getItemInformation() {
         return name + ": 攻击=" + getAttack() + " 防御=" + getDefense() + " 生命=" + getHealth();
+    }
+
+    /**
+     * 宠物小精灵攻击怪物
+     * @param monster 怪物
+     */
+    public void attackMonster(Monster monster) {
+        // 50 60    50 * 50 / 60
+        int minusHealth = this.attack *this.attack / monster.getDefense();
+        if (minusHealth == 0) minusHealth = 1;  // 伤害为0，需要调整伤害为1
+        else if (minusHealth > monster.getCurrentHealth()) {  // 如果伤害比怪物当前血量还要高
+            minusHealth = monster.getCurrentHealth();   // 伤害就应该等于怪物的当前血量
+        }
+        // 剩余血量
+        int restHealth = monster.getCurrentHealth() - minusHealth;
+        monster.setCurrentHealth(restHealth);
+        System.out.println(this.name + "对" + monster.getName() + "发动攻击，造成了" + minusHealth + "伤害");
     }
 
     /**
@@ -118,5 +140,17 @@ public abstract class Pokemon extends Item {
             totalHealth += equipment.getHealth();
         }
         return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
     }
 }
