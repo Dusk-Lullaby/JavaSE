@@ -32,4 +32,8 @@ public abstract class Item implements DisplayItem {
     public void setDiscovery(boolean discovery) {
         this.discovery = discovery;
     }
+
+    public String getName() {
+        return name;
+    }
 }
