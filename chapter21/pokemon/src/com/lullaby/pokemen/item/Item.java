@@ -18,7 +18,7 @@ public abstract class Item implements DisplayItem {
     /**
      * 是否被探索
      */
-    protected boolean discovery;
+    protected boolean discovery = true;
 
     public Item(String name) {
         this.name = name;
