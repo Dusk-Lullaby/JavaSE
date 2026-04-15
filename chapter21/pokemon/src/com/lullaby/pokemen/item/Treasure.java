@@ -7,7 +7,7 @@ import com.lullaby.pokemen.util.Tools;
  */
 public class Treasure extends Item {
 
-    public Treasure(String name, int levelNumber) {
+    public Treasure(int levelNumber) {
         super("宝箱", levelNumber);
     }
 
