@@ -14,4 +14,9 @@ public class Mamoswine extends Monster {
         this.health = Tools.getRandomNumber(600, 800, levelNumber);
         this.currentHealth = health;
     }
+
+    @Override
+    public String getItemInformation() {
+        return discovery ? "1" : "■";
+    }
 }

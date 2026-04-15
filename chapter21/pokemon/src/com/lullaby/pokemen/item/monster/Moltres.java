@@ -14,4 +14,9 @@ public class Moltres extends Monster {
         this.health = Tools.getRandomNumber(1400, 1800, levelNumber);
         this.currentHealth = health;
     }
+
+    @Override
+    public String getItemInformation() {
+        return discovery ? "4" : "■";
+    }
 }

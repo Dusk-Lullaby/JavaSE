@@ -14,4 +14,9 @@ public class CattleMonster extends Monster {
         this.health = Tools.getRandomNumber(700, 900, levelNumber);
         this.currentHealth = health;
     }
+
+    @Override
+    public String getItemInformation() {
+        return discovery ? "2" : "■";
+    }
 }

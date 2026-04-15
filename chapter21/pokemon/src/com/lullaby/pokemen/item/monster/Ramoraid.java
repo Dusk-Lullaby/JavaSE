@@ -14,4 +14,9 @@ public class Ramoraid extends Monster {
         this.health = Tools.getRandomNumber(900, 1100, levelNumber);
         this.currentHealth = health;
     }
+
+    @Override
+    public String getItemInformation() {
+        return discovery ? "3" : "■";
+    }
 }
