@@ -21,6 +21,6 @@ public class Treasure extends Item {
 
     @Override
     public String getItemInformation() {
-        return discovery ? "⨀" : "▧";
+        return discovery ? "¤" : "■";
     }
 }

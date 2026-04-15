@@ -55,7 +55,7 @@ public class Monster extends Item {
 
     @Override
     public String getItemInformation() {
-        return discovery ? name : "▧";
+        return discovery ? name : "■";
     }
 
     public int getDefense() {

@@ -19,6 +19,6 @@ public class Portal extends Item {
         if (discovery) {
             return next ? "→" : "←";
         }
-        return "▧";
+        return "■";
     }
 }
