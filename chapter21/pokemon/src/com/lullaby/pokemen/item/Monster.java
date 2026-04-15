@@ -6,7 +6,7 @@ import com.lullaby.pokemen.util.Tools;
 /**
  * 怪物
  */
-public class Monster extends Item {
+public abstract class Monster extends Item {
     /**
      * 攻击力
      */
@@ -51,11 +51,6 @@ public class Monster extends Item {
      */
     public Item drop() {
         return Tools.getRandomItem(levelNumber);
-    }
-
-    @Override
-    public String getItemInformation() {
-        return discovery ? name : "■";
     }
 
     public int getDefense() {
