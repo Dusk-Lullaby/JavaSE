@@ -7,7 +7,7 @@ public class Level {
     /**
      * 关卡编号
      */
-    private int number;
+    private final int number;
     /**
      * 关卡地图
      */
@@ -15,7 +15,7 @@ public class Level {
     /**
      * 上一个关卡
      */
-    private Level prevLevel;
+    private final Level prevLevel;
     /**
      * 下一个关卡
      */
