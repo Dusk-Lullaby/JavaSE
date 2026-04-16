@@ -1,5 +1,6 @@
 package com.lullaby.pokemen.level;
 
+import com.lullaby.pokemen.Adventurer;
 import com.lullaby.pokemen.DisplayItem;
 import com.lullaby.pokemen.item.Portal;
 import com.lullaby.pokemen.item.Treasure;
@@ -16,11 +17,15 @@ public class LevelMap {
     /**
      * 关卡编号
      */
-    private int number;
+    private final int number;
     /**
      * 地图上的物品：9 * 9
      */
     private static final DisplayItem[][] items = new DisplayItem[9][9];
+    /**
+     * 记录冒险家在地图中的位置
+     */
+    private int currentRow, currentCol;
 
     public LevelMap(int number) {
         this.number = number;
@@ -102,35 +107,142 @@ public class LevelMap {
     }
 
     /**
+     * 获取给定方向位置的物品信息
+     * @param direct 方向
+     * @return 物品
+     */
+    public DisplayItem getPositionItem(char direct) {
+        direct = Character.toUpperCase(direct);
+        int targetRow = currentRow;
+        int targetCol = currentCol;
+        switch (direct) {
+            case 'W':   // 上
+                if (currentRow < 1) {
+                    return null;
+                }
+                targetRow -= 1;
+                break;
+            case 'A':   // 左
+                if (currentCol < 1) {
+                    return null;
+                }
+                targetCol -= 1;
+                break;
+            case 'S':   // 下
+                if (currentRow >= items.length - 1) {
+                    return null;
+                }
+                targetRow += 1;
+                break;
+            case 'D':   // 右
+                if (currentCol >= items[currentRow].length - 1) {
+                    return null;
+                }
+                targetCol += 1;
+                break;
+        }
+
+        return items[targetRow][targetCol];
+    }
+
+    /**
+     * 向给定方向移动冒险家的位置
+     * @param direct 方向
+     */
+    public void move(char direct) {
+        int oldRow = currentRow;
+        int oldCol = currentCol;
+        // 获取冒险家
+        DisplayItem adventure = items[currentRow][currentCol];
+        direct = Character.toUpperCase(direct);
+        switch (direct) {
+            case 'W':   // 上
+                if (currentRow < 1) {
+                    System.err.println("非法移动");
+                    Tools.lazy(300L);
+                    return;
+                }
+                currentRow -= 1;
+                break;
+            case 'A':   // 左
+                if (currentCol < 1) {
+                    System.err.println("非法移动");
+                    Tools.lazy(300L);
+                    return;
+                }
+                currentCol -= 1;
+                break;
+            case 'S':   // 下
+                if (currentRow >= items.length - 1) {
+                    System.err.println("非法移动");
+                    Tools.lazy(300L);
+                    return;
+                }
+                currentRow += 1;
+                break;
+            case 'D':   // 右
+                if (currentCol >= items[currentRow].length - 1) {
+                    System.err.println("非法移动");
+                    Tools.lazy(300L);
+                    return;
+                }
+                currentCol += 1;
+                break;
+        }
+        items[currentRow][currentCol] = adventure;
+        items[oldRow][oldCol] = null;
+    }
+
+    /**
+     * 添加冒险家
+     * @param adventurer 冒险家
+     */
+    public void addAdventure(Adventurer adventurer) {
+        currentRow = 0;
+        if (number == 1) {  // 第一关
+            currentCol = 0;
+            items[currentRow][currentCol] = adventurer;
+        } else {
+            currentCol = 1;
+            items[currentRow][currentCol] = adventurer;
+        }
+    }
+
+    /**
      * 展示地图
      */
     public void show() {
+        System.out.println("宠物小精灵" + number + "关：");
         for (int i = 0; i < items.length; i++) {
             String line1 = "";
             String line2 = "";
             for (int j = 0; j < items[0].length; j++) {
+                String info = " ";
+                if (items[i][j] != null) {
+                    info = items[i][j].getItemInformation();
+                }
                 // 第一行
                 if (i == 0) {
                     if (j == 0) {   // 第一列
                         line1 += "┌───";
-                        line2 += "│ " + items[i][j].getItemInformation() + " ";
+                        line2 += "│ " + info + " ";
                     } else if (j == items[0].length - 1) {  // 最后一列
                         line1 += "┬───┐";
-                        line2 += "│ " + items[i][j].getItemInformation() + " │";
+                        line2 += "│ " + info + " │";
                     } else {
                         line1 += "┬───";
-                        line2 += "│ " + items[i][j].getItemInformation() + " ";
+                        line2 += "│ " + info + " ";
                     }
                 } else {
                     if (j == 0) {   //第一列
                         line1 += "├───";
-                        line2 += "│ " + items[i][j].getItemInformation() + " ";
+                        line2 += "│ " + info + " ";
                     } else if (j == items[0].length - 1) {  // 最后一列
                         line1 += "┼───┤";
-                        line2 += "│ " + items[i][j].getItemInformation() + " │";
+                        line2 += "│ " + info + " │";
                     } else {
                         line1 += "┼───";
-                        line2 += "│ " + items[i][j].getItemInformation() + " ";
+                        line2 += "│ " + info + " ";
                     }
                 }
             }

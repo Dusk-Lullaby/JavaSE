@@ -11,7 +11,7 @@ public class Level {
     /**
      * 关卡地图
      */
-    private LevelMap map;
+    private final LevelMap map;
     /**
      * 上一个关卡
      */
@@ -32,16 +32,8 @@ public class Level {
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public Level getPrevLevel() {
         return prevLevel;
-    }
-
-    public void setPrevLevel(Level prevLevel) {
-        this.prevLevel = prevLevel;
     }
 
     public Level getNextLevel() {
@@ -50,5 +42,9 @@ public class Level {
 
     public void setNextLevel(Level nextLevel) {
         this.nextLevel = nextLevel;
+    }
+
+    public LevelMap getMap() {
+        return map;
     }
 }

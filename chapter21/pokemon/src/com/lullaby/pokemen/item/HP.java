@@ -5,6 +5,9 @@ package com.lullaby.pokemen.item;
  */
 public class HP extends Item{
 
+    /**
+     * 药品数量
+     */
     private int count;
 
     public HP(int levelNumber, int count) {
@@ -29,8 +32,16 @@ public class HP extends Item{
         return count == 0;
     }
 
+    public void addCount(int count) {
+        this.count += count;
+    }
+
     @Override
     public String getItemInformation() {
         return name;
+    }
+
+    public int getCount() {
+        return count;
     }
 }

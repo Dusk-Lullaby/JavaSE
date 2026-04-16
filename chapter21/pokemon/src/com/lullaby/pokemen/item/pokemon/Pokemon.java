@@ -29,7 +29,7 @@ public abstract class Pokemon extends Item {
      * 宠物小精灵可以穿戴8件装备，默认没穿戴装备
      * 穿戴顺序：头盔、铠甲、护腿、鞋子、武器、项链、戒指、手镯
      */
-    private Equipment[] equipments = new Equipment[8];
+    private final Equipment[] equipments = new Equipment[8];
 
     public Pokemon(String name) {
         super(name);
@@ -37,7 +37,7 @@ public abstract class Pokemon extends Item {
 
     @Override
     public String getItemInformation() {
-        return name + ": 攻击=" + getAttack() + " 防御=" + getDefense() + " 生命=" + getHealth();
+        return star + "星" + name + ": 攻击=" + getAttack() + " 防御=" + getDefense() + " 生命=" + getHealth();
     }
 
     /**
@@ -81,7 +81,7 @@ public abstract class Pokemon extends Item {
      */
     public Equipment changeEquipment(Equipment newEquipment) {
         // 旧装备
-        Equipment old = null;
+        Equipment old;
         int index = -1;
         if (newEquipment instanceof Helmet) {   // 头盔
             index = 0;
@@ -115,6 +115,14 @@ public abstract class Pokemon extends Item {
         return old;
     }
 
+    /**
+     * 获取生命值与生命总值百分比
+     * @return 百分比
+     */
+    public double getHealthPercent() {
+        return currentHealth * 1.0 / getHealth();
+    }
+
     public int getAttack() {
         int totalAttack = attack;
         for (Equipment equipment : equipments) {
@@ -130,7 +138,7 @@ public abstract class Pokemon extends Item {
             if (equipment == null) continue;
             totalDefense += equipment.getDefense();
         }
-        return defense;
+        return totalDefense;
     }
 
     public int getHealth() {
@@ -139,7 +147,7 @@ public abstract class Pokemon extends Item {
             if (equipment == null) continue;
             totalHealth += equipment.getHealth();
         }
-        return health;
+        return totalHealth;
     }
 
     public void setHealth(int health) {

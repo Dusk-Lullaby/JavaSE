@@ -53,6 +53,13 @@ public abstract class Monster extends Item {
         return Tools.getRandomItem(levelNumber);
     }
 
+    /**
+     * 怪物恢复
+     */
+    public void resume() {
+        this.currentHealth = this.health;
+    }
+
     public int getDefense() {
         return defense;
     }
