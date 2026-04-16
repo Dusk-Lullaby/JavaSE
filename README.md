@@ -10,3 +10,4 @@
 6. chapter19：集合
 7. chapter20：static关键字
 8. chapter21：阶段项目-宠物小精灵
+9. chapter22：函数式接口和方法引用
