@@ -1,4 +1,4 @@
-package com.lullaby.Predicate;
+package com.lullaby.predicate;
 
 import java.util.Arrays;
 import java.util.List;

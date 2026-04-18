@@ -1,4 +1,4 @@
-package com.lullaby.Predicate;
+package com.lullaby.predicate;
 
 public class Student {
 
