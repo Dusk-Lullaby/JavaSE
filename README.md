@@ -11,4 +11,4 @@
 7. chapter20：static关键字
 8. chapter21：阶段项目-宠物小精灵
 9. chapter22：函数式接口和方法引用
-10. chapter23: Stream流
+10. chapter23：Stream流
