@@ -12,3 +12,4 @@
 8. chapter21：阶段项目-宠物小精灵
 9. chapter22：函数式接口和方法引用
 10. chapter23：Stream流
+11. chapter24：多线程
