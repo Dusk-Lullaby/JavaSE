@@ -8,7 +8,7 @@ public class MyCalendar {
 
     public static void main(String[] args) {
         int year = 2021;
-        int month = 1;
+        int month = 6;
         show(year, month);
     }
 
@@ -47,10 +47,9 @@ public class MyCalendar {
         System.out.println("一\t二\t三\t四\t五\t六\t日");
         for (int i = 0; i < days.size(); i++) {
             DayInfo info = days.get(i);
+            boolean changeLine = (i % 7 == 6);
+            info.setChange(changeLine);
             info.show();
-            if (i % 7 == 6) {
-                System.out.println(days.get(i));
-            }
         }
     }
 }
