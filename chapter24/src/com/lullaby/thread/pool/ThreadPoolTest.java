@@ -24,6 +24,11 @@ public class ThreadPoolTest {
             int size = poolExecutor.getQueue().size(); // 获取队列中任务个数
             long finish = poolExecutor.getCompletedTaskCount(); // 获取线程池执行完成任务的个数
             System.out.printf("线程池中核心线程数：%d, 队列中任务个数：%d，线程完成任务个数：%d\n", corePoolSize, size, finish);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         poolExecutor.shutdown();    // 关闭线程池，等待线程池中任务执行完成，但是不会接收新的任务
     }
@@ -40,7 +45,7 @@ public class ThreadPoolTest {
         public void run() {
             System.out.println("正在执行线程任务" + number);
             try {
-                Thread.sleep(4000);
+                Thread.sleep(400);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
