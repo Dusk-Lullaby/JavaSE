@@ -62,3 +62,7 @@ bin/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+
+# 忽略所有的 obj 存档文件
+*.obj
