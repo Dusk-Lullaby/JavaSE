@@ -12,17 +12,21 @@ public class UdpClient {
     }
 
     public void sendPacket(String msg, String ip, int port) throws IOException {
-        byte[] data = msg.getBytes();
-        InetAddress address = InetAddress.getByName(ip);
-        // 创建了一个发送数据的数据包
-        DatagramPacket packet = new DatagramPacket(data, 0, data.length, address, port);
-        client.send(packet);
+        DatagramUtil.sendPacket(client, msg, ip, port);
+    }
+
+    public String receivePacket() {
+        DatagramPacket packet = DatagramUtil.receive(client);
+        int length = packet.getLength();
+        String msg = new String(packet.getData(), 0, length);
+        return msg;
     }
 
     public static void main(String[] args) {
         try {
             UdpClient client = new UdpClient();
             client.sendPacket("Hello Server, I'm Client", "localhost", 6666);
+            System.out.println(client.receivePacket());
         } catch (SocketException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

@@ -30,18 +30,16 @@ public class DatagramUtil {
      * @param socket 数据报套接字
      * @return
      */
-    public static String receive(DatagramSocket socket) {
+    public static  DatagramPacket receive(DatagramSocket socket) {
         String msg = null;
         byte[] buffer = new byte[BUFFER_SIZE];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         try {
             socket.receive(packet);
-            int length = packet.getLength();
-            msg = new String(buffer, 0, length);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return msg;
+        return packet;
     }
 }

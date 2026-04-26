@@ -1,6 +1,9 @@
 package com.lullaby.datagram;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
 
 public class UdpServer {
@@ -16,8 +19,18 @@ public class UdpServer {
      */
     public void start() {
         while (true) {
-            String msg = DatagramUtil.receive(server);
+            DatagramPacket packet = DatagramUtil.receive(server);
+            int length = packet.getLength();
+            String msg = new String(packet.getData(), 0, length);
             System.out.println(msg);
+            InetAddress address = packet.getAddress();
+            String ip = address.getHostAddress();
+            int port = packet.getPort();
+            try {
+                DatagramUtil.sendPacket(server, "Hello Client, I'm Server", ip, port);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
