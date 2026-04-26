@@ -1,0 +1,5 @@
+<!ELEMENT students (student*)>
+<!ELEMENT student (name, sex, age) ANY>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
