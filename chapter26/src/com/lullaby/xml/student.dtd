@@ -1,5 +1,13 @@
 <!ELEMENT students (student*)>
-<!ELEMENT student (name, sex, age) ANY>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT sex (#PCDATA)>
-<!ELEMENT age (#PCDATA)>
+<!--<!ELEMENT student (name, sex, age) ANY>-->
+<!--<!ELEMENT name (#PCDATA)>-->
+<!--<!ELEMENT sex (#PCDATA)>-->
+<!--<!ELEMENT age (#PCDATA)>-->
+
+
+<!ELEMENT student EMPTY>
+<!ATTLIST student number ID #REQUIRED>
+<!ATTLIST student name CDATA>
+<!ATTLIST student sex(男|女|其他) #IMPLIED>
+<!ATTLIST student age CDATA>
+<!ATTLIST student country(中国) CDATA #FIXED>
