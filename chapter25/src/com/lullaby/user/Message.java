@@ -17,15 +17,7 @@ public class Message<T> implements Serializable {
         return data;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
     public String getAction() {
         return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 }
